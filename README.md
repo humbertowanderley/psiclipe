@@ -1,6 +1,9 @@
 # psiclipe
 Projeto da Disciplina de Introdução a Multimídia
 
+## Fluxo
+![alt text](/Doc/fluxo-psiclipe.jpg "Fluxo")
+
 ## Pasta raiz do projeto dentro do container: 
 ```/code```
 O volume é mapeado automaticamente para o diretorio onde se encontra o docker-compose. Uma alteração no arquivo local implica uma alteração nos arquivos mapeados dentro do container.
