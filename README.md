@@ -28,7 +28,7 @@ para reiniciar o container:
 ### Deep Dream
 https://github.com/herval/deepdream-docker (rede neural)  
 ### Flask
-http://flask.pocoo.org/ (webserver python)  
+http://flask.pocoo.org/ (webserver python)  porta padrão: localhost:5000
 ### musiXmatch-API
 https://github.com/yakupadakli/python-musixmatch  (coletar letra das musicas)  
 ### Google Custom Search
