@@ -25,10 +25,10 @@ para reiniciar o container:
 
 ## Ferramentas pré instaladas no container:
 
-Deep Dream - https://github.com/herval/deepdream-docker (rede neural)
-Flask - http://flask.pocoo.org/ (webserver python)
-musiXmatch-API - https://github.com/yakupadakli/python-musixmatch  (coletar letra das musicas)
-Google Custom Search - https://developers.google.com/api-client-library/python/apis/customsearch/v1 (coletar as imagens)
-TextBlob - https://textblob.readthedocs.io/en/dev/ (processamento de texto)
-youtube-dl - https://ytdl-org.github.io/youtube-dl/index.html  (coleta musicas do youtube)
+Deep Dream - https://github.com/herval/deepdream-docker (rede neural)  
+Flask - http://flask.pocoo.org/ (webserver python)  
+musiXmatch-API - https://github.com/yakupadakli/python-musixmatch  (coletar letra das musicas)  
+Google Custom Search - https://developers.google.com/api-client-library/python/apis/customsearch/v1 (coletar as imagens)  
+TextBlob - https://textblob.readthedocs.io/en/dev/ (processamento de texto)  
+youtube-dl - https://ytdl-org.github.io/youtube-dl/index.html  (coleta musicas do youtube)  
 
