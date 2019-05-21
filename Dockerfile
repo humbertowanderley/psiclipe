@@ -37,8 +37,8 @@ RUN /code/caffe/scripts/download_model_binary.py /code/caffe/models/bvlc_googlen
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN pip install flask && \
-pip install google-api-python-client
+RUN pip install flask
+#pip install google-api-python-client
 #pip install youtube-dl && \
 #pip install -U textblob && \
 #python -m textblob.download_corpora && \
