@@ -9,20 +9,13 @@ RUN apt-get install -qy libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-d
  
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
-RUN pip install numpy --upgrade && \
-pip install flask && \
-pip install python-musixmatch && \
-pip install google-api-python-client
-#pip install -U textblob && \
-#python -m textblob.download_corpora && \
-#pip install youtube-dl
+RUN pip install numpy --upgrade 
+
 
 # Caffe
 WORKDIR /code/caffe
 RUN cp Makefile.config.example Makefile.config
 RUN easy_install --upgrade pip
-
-
 
 # Enable CPU-only + openblas (faster than atlas)
 RUN sed -i 's/# CPU_ONLY/CPU_ONLY/g' Makefile.config
@@ -36,12 +29,20 @@ ENV PYTHONPATH=/caffe/python
 
 # Download model
 RUN chmod +x scripts/download_model_binary.py
-# RUN scripts/download_model_binary.py models/bvlc_googlenet
+RUN /code/caffe/scripts/download_model_binary.py /code/caffe/models/bvlc_googlenet
 
 #supervisord conf
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
+RUN pip install flask && \
+pip install python-musixmatch && \
+pip install google-api-python-client && \
+pip install -U textblob && \
+python -m textblob.download_corpora && \
+pip install youtube-dl
 
 WORKDIR /code
 
