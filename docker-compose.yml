@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  psiclipe:
+    container_name: psiclipe
+    image: hawn/psiclipe-img
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000
+    command: "/usr/bin/supervisord"
+    restart: unless-stopped
