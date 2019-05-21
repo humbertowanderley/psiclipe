@@ -38,12 +38,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 RUN pip install flask && \
-pip install python-musixmatch && \
 pip install google-api-python-client && \
 pip install -U textblob && \
 python -m textblob.download_corpora && \
 pip install youtube-dl
-
+#pip install python-musixmatch
 WORKDIR /code
 
 
