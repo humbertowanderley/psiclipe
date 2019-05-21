@@ -21,6 +21,13 @@ RUN easy_install --upgrade pip
 RUN sed -i 's/# CPU_ONLY/CPU_ONLY/g' Makefile.config
 RUN sed -i 's/BLAS := atlas/BLAS := open/g' Makefile.config
 
+RUN pip install flask && \
+pip install google-api-python-client && \
+pip install -U textblob && \
+python -m textblob.download_corpora && \
+pip install youtube-dl
+#pip install python-musixmatch
+
 # Caffe's Python dependencies...
 RUN pip install -r python/requirements.txt
 RUN make all
@@ -37,12 +44,7 @@ RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
-RUN pip install flask && \
-pip install google-api-python-client && \
-pip install -U textblob && \
-python -m textblob.download_corpora && \
-pip install youtube-dl
-#pip install python-musixmatch
+
 WORKDIR /code
 
 
