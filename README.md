@@ -2,7 +2,7 @@
 Projeto da Disciplina de Introdução a Multimídia
 
 ## Fluxo
-![alt text](/Doc/fluxo_psiclipe.jpg "Fluxo")
+![alt text](fluxo_psiclipe.jpg "Fluxo")
 
 ## Pasta raiz do projeto dentro do container: 
 ```/code```
