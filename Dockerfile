@@ -36,7 +36,7 @@ ENV PYTHONPATH=/caffe/python
 
 # Download model
 RUN chmod +x scripts/download_model_binary.py
-RUN scripts/download_model_binary.py models/bvlc_googlenet
+# RUN scripts/download_model_binary.py models/bvlc_googlenet
 
 #supervisord conf
 
