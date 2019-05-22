@@ -1,7 +1,7 @@
 Cython
 numpy
 scipy
-scikit-image
+scikit-image>=0.17.0
 matplotlib
 ipython
 h5py
