@@ -1,10 +1,13 @@
-FROM ubuntu:14.04
+FROM ubuntu:xenial
 
 RUN mkdir /code
 ADD . /code/
 
 # General dependencies, lots of them
-RUN apt-get update
+RUN apt-get update && \
+apt-get upgrade && \
+apt-get install software-properties-common && \
+add-apt-repository ppa:jonathonf/ffmpeg-4 -y
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
