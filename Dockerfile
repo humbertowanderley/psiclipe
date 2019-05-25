@@ -4,8 +4,8 @@ RUN mkdir /code
 ADD . /code/
 
 # General dependencies, lots of them
-RUN apt-get update && \
-apt-get upgrade && \
+RUN apt-get update  && \
+apt-get upgrade -y && \
 apt-get install software-properties-common && \
 add-apt-repository ppa:jonathonf/ffmpeg-4 -y
 # Python + pip
