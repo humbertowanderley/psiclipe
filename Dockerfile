@@ -6,7 +6,7 @@ ADD . /code/
 # General dependencies, lots of them
 RUN apt-get update  && \
 apt-get upgrade -y && \
-apt-get install software-properties-common && \
+apt-get install software-properties-common -y && \
 add-apt-repository ppa:jonathonf/ffmpeg-4 -y
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
