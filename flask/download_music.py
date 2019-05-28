@@ -4,7 +4,7 @@ import youtube_dl
 #comando adicionado: sudo apt-get install ffmpeg
 
 def url_search(music_name):
-    url_ret = 'ytsearch1:' + music_name + ' music'
+    url_ret = 'ytsearch1:' + music_name + 'official music'
     return url_ret
 
 def music(music_name):
@@ -27,6 +27,7 @@ def music(music_name):
 
     ydl_opts = {
         'format': 'bestaudio/best',
+        'outtmpl': 'musics/%(title)s.%(ext)s',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -37,6 +38,5 @@ def music(music_name):
     }
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url_search(music_name)])
-
-
-music('envolvimento')
+        
+    return 'music downloaded'
