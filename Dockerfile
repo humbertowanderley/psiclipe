@@ -3,11 +3,14 @@ FROM ubuntu:xenial
 RUN mkdir /code
 ADD . /code/
 
-# General dependencies, lots of them
-RUN apt-get update  && \
-apt-get upgrade -y && \
-apt-get install software-properties-common -y && \
-add-apt-repository ppa:jonathonf/ffmpeg-4 -y
+# We want the "add-apt-repository" command
+RUN apt-get update && apt-get install -y software-properties-common
+
+# Install "ffmpeg"
+RUN add-apt-repository ppa:mc3man/trusty-media
+RUN apt-get update && apt-get install -y ffmpeg
+
+
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
