@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y ffmpeg
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
 
-RUN apt-get install -qy libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
+RUN apt-get update && apt-get install -qy -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
 
  
 # Caffe
