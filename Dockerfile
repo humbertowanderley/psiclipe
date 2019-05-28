@@ -3,13 +3,11 @@ FROM ubuntu:14.04
 RUN mkdir /code
 ADD . /code/
 
-# We want the "add-apt-repository" command
-RUN apt-get update && apt-get install -y software-properties-common
-RUN add-apt-repository ppa:mc3man/trusty-media
+
 
 # General dependencies, lots of them
 RUN apt-get update && apt-get install -y git
-RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor ffmpeg
+RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
 
 
 # Python + pip
@@ -27,7 +25,6 @@ RUN sed -i 's/# CPU_ONLY/CPU_ONLY/g' Makefile.config
 RUN sed -i 's/BLAS := atlas/BLAS := open/g' Makefile.config
 
 
-
 # Caffe's Python dependencies...
 RUN pip install -r python/requirements.txt
 RUN make all
@@ -42,6 +39,15 @@ RUN /code/caffe/scripts/download_model_binary.py /code/caffe/models/bvlc_googlen
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
+
+# We want the "add-apt-repository" command
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:mc3man/trusty-media
+
+RUN apt-get update && apt-get install -y ffmpeg
+
 
 RUN pip install flask && \
 pip install youtube-dl && \
