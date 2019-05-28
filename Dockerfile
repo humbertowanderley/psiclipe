@@ -5,17 +5,16 @@ ADD . /code/
 
 # We want the "add-apt-repository" command
 RUN apt-get update && apt-get install -y software-properties-common
-
-# Install "ffmpeg"
 RUN add-apt-repository ppa:mc3man/trusty-media
-RUN apt-get update && apt-get install -y ffmpeg
+
+# General dependencies, lots of them
+RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor ffmpeg
 
 
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
-
-RUN apt-get update && apt-get install -qy -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
 
  
 # Caffe
