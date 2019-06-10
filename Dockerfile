@@ -1,18 +1,18 @@
-FROM ubuntu:xenial
+FROM ubuntu:14.04
 
 RUN mkdir /code
 ADD . /code/
 
+
+
 # General dependencies, lots of them
-RUN apt-get update  && \
-apt-get upgrade -y && \
-apt-get install software-properties-common -y && \
-add-apt-repository ppa:jonathonf/ffmpeg-4 -y
+RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
+
+
 # Python + pip
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
-
-RUN apt-get install -qy libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libatlas-dev libzmq3-dev libboost-all-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler bc libopenblas-dev supervisor
 
  
 # Caffe
@@ -23,7 +23,6 @@ RUN easy_install --upgrade pip
 # Enable CPU-only + openblas (faster than atlas)
 RUN sed -i 's/# CPU_ONLY/CPU_ONLY/g' Makefile.config
 RUN sed -i 's/BLAS := atlas/BLAS := open/g' Makefile.config
-
 
 
 # Caffe's Python dependencies...
@@ -40,6 +39,15 @@ RUN /code/caffe/scripts/download_model_binary.py /code/caffe/models/bvlc_googlen
 
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
+
+# We want the "add-apt-repository" command
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:mc3man/trusty-media
+
+RUN apt-get update && apt-get install -y ffmpeg
+
 
 RUN pip install flask && \
 pip install youtube-dl && \
