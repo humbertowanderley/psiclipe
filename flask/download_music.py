@@ -40,3 +40,18 @@ def music(music_name):
         ydl.download([url_search(music_name)])
         
     return 'music downloaded'
+
+def download_song(url):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': 'music/%(title)s.%(ext)s',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    print 'ok'
+    return 'ok'
