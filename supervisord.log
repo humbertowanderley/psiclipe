@@ -449,3 +449,19 @@
 2019-05-28 16:16:01,269 WARN received SIGTERM indicating exit request
 2019-05-28 16:16:01,270 INFO waiting for topology to die
 2019-05-28 16:16:01,272 INFO stopped: topology (terminated by SIGTERM)
+2019-06-12 16:01:27,922 CRIT Supervisor running as root (no user in config file)
+2019-06-12 16:01:28,069 INFO supervisord started with pid 1
+2019-06-12 16:01:29,071 INFO spawned: 'topology' with pid 8
+2019-06-12 16:01:29,398 INFO exited: topology (exit status 1; not expected)
+2019-06-12 16:01:30,400 INFO spawned: 'topology' with pid 11
+2019-06-12 16:01:30,588 INFO exited: topology (exit status 1; not expected)
+2019-06-12 16:01:32,591 INFO spawned: 'topology' with pid 14
+2019-06-12 16:01:32,967 INFO exited: topology (exit status 1; not expected)
+2019-06-12 16:01:35,973 INFO spawned: 'topology' with pid 17
+2019-06-12 16:01:36,202 INFO exited: topology (exit status 1; not expected)
+2019-06-12 16:01:37,203 INFO gave up: topology entered FATAL state, too many start retries too quickly
+2019-06-12 16:02:49,939 WARN received SIGTERM indicating exit request
+2019-06-12 16:02:54,989 CRIT Supervisor running as root (no user in config file)
+2019-06-12 16:02:54,991 INFO supervisord started with pid 1
+2019-06-12 16:02:55,995 INFO spawned: 'topology' with pid 8
+2019-06-12 16:02:57,685 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

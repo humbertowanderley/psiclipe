@@ -3,7 +3,6 @@
 from flask import *
 app = Flask(__name__)
 
-from download_music import *
 from source_code import *
 
 template_dir = '/code/flask/html'
@@ -15,8 +14,9 @@ app = Flask(__name__,template_folder=template_dir, static_folder=static_dir)
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
-        input_text = request.form['musicName']
-        return project_structure(input_text)
+        input_MusicName = request.form['musicName']
+        input_ArtistName = request.form['artistName']
+        return project_structure(input_MusicName,input_ArtistName)
     else:
         return render_template('index.html')
 

@@ -11,15 +11,23 @@
       <div class="d-flex justify-content-center">
         <h1 class="h1"> Psiclipe - Multimídia </h1>
       </div>
-      <div class="col-12">
-        <div class="col-md-8 offset-md-2">
-            <input id="txtMusicName" type="text" class="form-control" placeholder="Insira a música" aria-label="MusicName" aria-describedby="basic-addon1">
+      <form method="POST">
+        <div class="col-12">
+          <div class="col-md-8 offset-md-2">
+            <h5>Digite o nome da música:</h5>
+              <input id="txtMusicName" name="musicName" type="text" class="form-control" placeholder="Insira a música" aria-label="MusicName" aria-describedby="basic-addon1">
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <h5>Digite o nome do artista:</h5>
+              <input id="txtArtistName" name="artistName" type="text" class="form-control" placeholder="Insira o Artista" aria-label="MusicName" aria-describedby="basic-addon1">
+
+          </div>
+          <br>
+          <div class="d-flex justify-content-center">
+              <button id="button" type="submit" class="btn btn-success">Buscar</button>
+          </div>
         </div>
-        <br>
-        <div class="d-flex justify-content-center">
-            <button id="button" type="submit" class="btn btn-success">Buscar</button>
-        </div>
-      </div>
+      </form>
     </div>
 
     
