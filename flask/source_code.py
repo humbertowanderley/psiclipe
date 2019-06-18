@@ -1,6 +1,7 @@
 
 from search_lyric import get_lyric_videoLink
 from download_music import download_song
+from get_images import get_lyric_images
 
 def project_structure(text_music_name,text_artist_name):
     
@@ -11,6 +12,8 @@ def project_structure(text_music_name,text_artist_name):
     
     youtube_link = temp[0]
     lyric = temp[1] 
+
+    image_timestamp = get_lyric_images(lyric)
 
     download_song(youtube_link)
 
