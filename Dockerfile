@@ -14,22 +14,20 @@ RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsn
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
 
+#Repositorio do deepdream
+WORKDIR /code/flask
+RUN git clone https://github.com/alemarotti1/deepdream
  
 # Caffe
 WORKDIR /code/caffe
-RUN cp Makefile.config.example Makefile.config
 RUN easy_install --upgrade pip
-
-# Enable CPU-only + openblas (faster than atlas)
-RUN sed -i 's/# CPU_ONLY/CPU_ONLY/g' Makefile.config
-RUN sed -i 's/BLAS := atlas/BLAS := open/g' Makefile.config
 
 
 # Caffe's Python dependencies...
 RUN pip install -r python/requirements.txt
 RUN make all
 RUN make pycaffe
-ENV PYTHONPATH=/caffe/python
+ENV PYTHONPATH=/code/caffe/python:/caffe/python
 
 # Download model
 RUN chmod +x scripts/download_model_binary.py
@@ -51,12 +49,8 @@ RUN apt-get update && apt-get install -y ffmpeg
 
 RUN pip install flask && \
 pip install youtube-dl && \
-pip install textblob && \
-python -m textblob.download_corpora && \
 pip install beautifulsoup4 && \
 pip install google_images_download
-#pip install google-api-python-client
-#pip install python-musixmatch
 
 WORKDIR /code
 
