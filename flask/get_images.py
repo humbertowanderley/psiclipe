@@ -8,8 +8,9 @@ def search_image(busc, limit):
 			"limit":limit,
 			"print_urls":True, 
 			"delay":1, 
+			"exact_size": "640,480",
 			"format":'jpg',
-			"output_directory":"imagens",
+			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
 			"prefix":busc}
 	paths = response.download(arguments)

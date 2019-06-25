@@ -27,7 +27,7 @@ def music(music_name):
 
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': 'musics/%(title)s.%(ext)s',
+        'outtmpl': '/code/flask/music/%(title)s.%(ext)s',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -44,7 +44,7 @@ def music(music_name):
 def download_song(url):
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': 'music/%(title)s.%(ext)s',
+        'outtmpl': '/code/flask/music/%(title)s.%(ext)s',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',

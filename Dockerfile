@@ -50,7 +50,10 @@ RUN apt-get update && apt-get install -y ffmpeg
 RUN pip install flask && \
 pip install youtube-dl && \
 pip install beautifulsoup4 && \
-pip install google_images_download
+pip install google_images_download && \
+pip install opencv-contrib-python-headless && \
+pip install --ignore-installed moviepy && \
+pip install --upgrade youtube-dl  
 
 WORKDIR /code
 
