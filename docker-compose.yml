@@ -2,7 +2,7 @@ version: '2'
 
 services:
   psiclipe:
-    container_name: psiclipe-container
+    container_name: psiclipe
     image: hawn/psiclipe-img
     volumes:
       - .:/code

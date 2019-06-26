@@ -14,10 +14,7 @@ RUN apt-get update && apt-get install -y -f libprotobuf-dev libleveldb-dev libsn
 RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 RUN pip install numpy --upgrade 
 
-#Repositorio do deepdream
-WORKDIR /code/flask
-RUN git clone https://github.com/alemarotti1/deepdream
- 
+
 # Caffe
 WORKDIR /code/caffe
 RUN easy_install --upgrade pip
@@ -52,8 +49,8 @@ pip install youtube-dl && \
 pip install beautifulsoup4 && \
 pip install google_images_download && \
 pip install opencv-contrib-python-headless && \
-pip install --ignore-installed moviepy && \
 pip install rake-nltk && \
+pip install moviepy --ignore-installed  && \
 pip install --upgrade youtube-dl  
 
 WORKDIR /code
