@@ -53,6 +53,7 @@ pip install beautifulsoup4 && \
 pip install google_images_download && \
 pip install opencv-contrib-python-headless && \
 pip install --ignore-installed moviepy && \
+pip install rake-nltk && \
 pip install --upgrade youtube-dl  
 
 WORKDIR /code

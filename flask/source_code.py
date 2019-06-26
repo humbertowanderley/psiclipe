@@ -1,8 +1,10 @@
-# coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from search_lyric import get_lyric_videoLink
 from download_music import download_song
 from get_images import get_lyric_images
 from make_video import make_video
+#from dream import aux_dream
 
 
 current_job = "Aguarde..."
@@ -29,10 +31,20 @@ def project_structure(text_music_name,text_artist_name):
     current_job = "Baixando imagens"
     image_timestamp = get_lyric_images(lyric)
 
+    #image_timestamp = [['/code/flask/imagens/34 1.0_2.jpg', 167.9, 169.8],['/code/flask/imagens/35 1.reunion-800.jpg', 169.9, 174.1],['/code/flask/imagens/36 1.single-life-quotes.jpg', 174.2, 177.5]]
 
-    make_video()
+    #dream_image_timestamp = aux_dream(image_timestamp)
+    
+    make_video(image_timestamp)
 
     done_job = True
     return 'tudo certo ate agora.'
 
 # print project_structure('envolvimento', 'mc loma')
+
+
+
+
+
+
+
