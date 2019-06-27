@@ -29,13 +29,18 @@ def make_video(images_timestamp):
 
 	all_clips = []
 
+	previousLine = []
+
 	for line in images_timestamp:
 		if(first_image):
 			all_clips.append(ImageClip('/code/flask/intro.jpg',duration=(float(line[1]))))
 			first_image = False
+			previousLine = line
+			continue
 		
-		all_clips.append(ImageClip(line[0],duration=(float(line[2])-float(line[1]))))
-
+		all_clips.append(ImageClip(previousLine[0],duration=(float(line[1])-float(previousLine[1]))))
+		previousLine = line
+	all_clips.append(ImageClip(previousLine[0],duration=(float(previousLine[2])-float(previousLine[1]))))
 
 	final_clip = concatenate_videoclips(all_clips)
 
