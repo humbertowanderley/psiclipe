@@ -39,11 +39,10 @@ def get_cync_lyric_arr(id_mus, arr_sib):
     if arr_sib is None:
         return None
     else:
-        for ar in arr_sib:
-            url = 'https://m.letras.mus.br/subtitle/' + id_mus + '/' + ar
-            lyric = get_cync_lyric(url)
-            if lyric is not None:
-                return lyric
+        url = 'https://m.letras.mus.br/subtitle/' + id_mus + '/' + arr_sib
+        lyric = get_cync_lyric(url)
+        if lyric is not None:
+            return lyric
         return None
 
 def get_cync_lyric(url):
@@ -76,6 +75,6 @@ def get_lyric_videoLink(text_music_name,text_artist_name):
     id_lyric_arr = check_has_subtitle(id_mus_vid[0])
     if id_lyric_arr is None:
         return None
-    lyric_sync = get_cync_lyric_arr(id_mus_vid[0], id_lyric_arr)
+    lyric_sync = get_cync_lyric_arr(id_mus_vid[0], id_mus_vid[1])
     youtube_link = "https://www.youtube.com/watch?v=" + id_mus_vid[1]
     return [youtube_link,lyric_sync]

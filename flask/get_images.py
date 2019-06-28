@@ -15,7 +15,7 @@ def search_image(busc, limit):
 			"print_urls":True, 
 			"delay":1, 
 			"exact_size": "800,600",
-			"type": 'clip-art',
+			"type": "photo",
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
@@ -33,7 +33,7 @@ def get_lyric_images(lyric):
 		text = line[0].replace(',','').replace(u'\u2019','').replace(u'\u2018','').replace(u'\xea','e').replace(u'\xe9','e').replace(u'\xe3','a').replace(u'\xe1','a').replace(u'\xf3','o')
 		text = r.extract_keywords_from_text(text)
 		text = r.get_ranked_phrases()
-		aux = []
+
 		search = ""
 		for word in text:
 			search = search + " " + random.choice(word.split())
