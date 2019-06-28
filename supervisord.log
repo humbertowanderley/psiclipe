@@ -9146,3 +9146,15 @@
 2019-06-27 20:15:25,865 INFO supervisord started with pid 1
 2019-06-27 20:15:26,870 INFO spawned: 'topology' with pid 8
 2019-06-27 20:15:27,873 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-27 21:09:19,780 WARN received SIGTERM indicating exit request
+2019-06-27 21:09:19,780 INFO waiting for topology to die
+2019-06-27 21:09:19,797 INFO stopped: topology (terminated by SIGTERM)
+2019-06-27 21:09:19,798 CRIT reaped unknown pid 130)
+2019-06-27 21:09:24,175 CRIT Supervisor running as root (no user in config file)
+2019-06-27 21:09:24,177 INFO supervisord started with pid 1
+2019-06-27 21:09:25,182 INFO spawned: 'topology' with pid 8
+2019-06-27 21:09:26,185 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-27 22:21:40,894 CRIT Supervisor running as root (no user in config file)
+2019-06-27 22:21:41,172 INFO supervisord started with pid 1
+2019-06-27 22:21:42,176 INFO spawned: 'topology' with pid 8
+2019-06-27 22:21:43,177 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

@@ -15,6 +15,7 @@ def search_image(busc, limit):
 			"print_urls":True, 
 			"delay":1, 
 			"exact_size": "800,600",
+			"type": 'clip-art',
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
