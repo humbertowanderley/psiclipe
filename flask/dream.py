@@ -237,3 +237,11 @@ def aux_dream(image_timestamp):
 
     
     return dream_image_timestamp
+
+# print 'comecando...'
+
+# image_timestamp = [['/code/flask/imagens/0 1.lefthand.jpg', 167.9, 169.8],['/code/flask/imagens/1 1.writing-number-words-1.jpg', 169.9, 174.1]]
+# print 'fotos separadas...'
+# dream_image_timestamp = aux_dream(image_timestamp)
+# print 'feito o deep dream das fotos:\n'
+# print dream_image_timestamp

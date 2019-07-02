@@ -22,6 +22,18 @@
               <input id="txtArtistName" name="artistName" type="text" class="form-control" placeholder="Insira o Artista" aria-label="MusicName" aria-describedby="basic-addon1">
 
           </div>
+          <div class="col-md-8 offset-md-2"> 
+            Selecione o tipo das imagens:
+            <select class="form-control" name="typeImageOp">
+              <option value="photo" selected>Foto</option>
+              <option value="face">Rosto</option>
+              <option value="clipart">Clip art</option>
+              <option value="line-drawing">Desenho linear</option>
+            </select>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <label> Deepdream: <input type="checkbox" name="deepDreamOp" value="select"></label>
+          </div>
           <br>
           <div class="d-flex justify-content-center">
               <button id="button" type="submit" class="btn btn-success">Buscar</button>

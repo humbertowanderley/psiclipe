@@ -6,6 +6,8 @@ services:
     image: hawn/psiclipe-img
     volumes:
       - .:/code
+    environment:
+      - LD_LIBRARY_PATH=/code/caffe/.build_release/lib
     ports:
       - 5000:5000
     command: "/usr/bin/supervisord"

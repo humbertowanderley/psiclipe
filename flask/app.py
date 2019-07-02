@@ -29,7 +29,11 @@ def index():
 	if request.method == 'POST':
 		input_MusicName = request.form['musicName']
 		input_ArtistName = request.form['artistName']
-		project_structure(input_MusicName,input_ArtistName)
+		input_OpDeepDream = False
+		if request.form.get('deepDreamOp'):
+			input_OpDeepDream = True
+		input_ImageType = request.form.get('typeImageOp')
+		project_structure(input_MusicName,input_ArtistName,input_OpDeepDream,input_ImageType)
 		return redirect('/clipe')
 		
 	else:

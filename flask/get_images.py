@@ -5,7 +5,7 @@ from rake_nltk import Rake
 import random
 image_sequence = 0
 
-def search_image(busc, limit):
+def search_image(busc, limit, image_type):
 	global image_sequence
 
 	response = google_images_download.googleimagesdownload()
@@ -14,8 +14,8 @@ def search_image(busc, limit):
 			"limit":limit,
 			"print_urls":True, 
 			"delay":1, 
-			"exact_size": "800,600",
-			"type": "photo",
+			"exact_size": "400,300",
+			"type": image_type,
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
@@ -24,7 +24,7 @@ def search_image(busc, limit):
 
 	return(paths[0][busc][0])
 
-def get_lyric_images(lyric):
+def get_lyric_images(lyric,image_type):
 	global image_sequence
 	vetor = []
 	r = Rake()
@@ -37,7 +37,7 @@ def get_lyric_images(lyric):
 		search = ""
 		for word in text:
 			search = search + " " + random.choice(word.split())
-		vetor.append([search_image(search,1), float(line[1]), float(line[2])])
+		vetor.append([search_image(search,1,image_type), float(line[1]), float(line[2])])
 
 		image_sequence = image_sequence + 1
 
