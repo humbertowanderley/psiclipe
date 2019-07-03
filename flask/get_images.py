@@ -14,7 +14,7 @@ def search_image(busc, limit, image_type):
 			"limit":limit,
 			"print_urls":True, 
 			"delay":1, 
-			"exact_size": "400,300",
+			"exact_size": "800,600",
 			"type": image_type,
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",

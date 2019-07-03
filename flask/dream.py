@@ -208,35 +208,71 @@ def mydream(img_in,guide_in,end_in, img_name):
 # This way we can affect the style of generated images without using a different training set.
 
 
-def aux_dream(image_timestamp):
+# def aux_dream(image_timestamp):
 
-    dream_image_timestamp = []
+#     dream_image_timestamp = []
 
 
-    i = 0
+#     i = 0
 
    
 
-    for line in image_timestamp:
-        img_guide = None
-        img_in = np.float32(PIL.Image.open(line[0]))
+#     for line in image_timestamp:
+#         img_guide = None
+#         img_in = np.float32(PIL.Image.open(line[0]))
 
-        if i < (len(image_timestamp) - 1):
-            img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
+#         if i < (len(image_timestamp) - 1):
+#             img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
 
-        img_name = line[0].split('/code/flask/imagens/')[1]
-        if(img_guide is not None):
+#         img_name = line[0].split('/code/flask/imagens/')[1]
+#         if(img_guide is not None):
             
-            mydream(img_in, img_guide, 'inception_3b/output',img_name)
+#             mydream(img_in, img_guide, 'inception_3b/output',img_name)
 
-        else:
-            deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
+#         else:
+#             deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
         
-        dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name, line[1], line[2]])
-        i = i + 1
+#         dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name, line[1], line[2]])
+#         i = i + 1
 
     
-    return dream_image_timestamp
+#     return dream_image_timestamp
+def dreamVideo(image_timestamp):
+    
+	dream_image_timestamp = []
+
+	
+	i = 0
+
+	
+	last_frame = None
+	img_in = None
+	imageGuide = None
+
+	for line in image_timestamp:
+		
+		for y in range(10):
+			if(last_frame is None):
+				img_in = np.float32(PIL.Image.open(line[0]))
+			else:
+				img_in = last_frame
+			
+			
+			if i < (len(image_timestamp) - 1):
+				img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
+
+			img_name = line[0].split('/code/flask/imagens/')[1]
+			if(img_guide is not None):
+				last_frame = mydream(img_in, img_guide, 'inception_3b/output',img_name+str(y)+'.jpg')
+
+			else:
+				last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
+			
+			dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y), line[1], line[2]])
+		
+		i = i + 1
+	
+	return dream_image_timestamp
 
 # print 'comecando...'
 
