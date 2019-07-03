@@ -23,6 +23,7 @@ import scipy.ndimage as nd
 import PIL.Image
 from IPython.display import clear_output, Image, display
 from google.protobuf import text_format
+import random
 
 import caffe
 
@@ -182,6 +183,8 @@ def mydream(img_in,guide_in,end_in, img_name):
 
     img = img_in
     guide = guide_in
+	
+	
     end = end_in
     h, w = guide.shape[:2]
     src, dst = net.blobs['data'], net.blobs[end]
@@ -190,8 +193,20 @@ def mydream(img_in,guide_in,end_in, img_name):
     net.forward(end=end)
     guide_features = dst.data[0].copy()
     myoutput = deepdream(net, img, end=end, objective=objective_guide)
+	
+    h1,w1 = myoutput.shape[:2]
+	# h1, w1 = myoutput.shape[:2]
+    s1 = 0.1
+	# s1 = 0.1 # scale coefficient
+    myoutput = nd.affine_transform(myoutput, [1-s1,1-s1,1], [h1*s1/2,w1*s1/2,0], order=1)
+	# myoutput = nd.affine_transform(frame, [1-s,1-s,1], [h1*s1/2,w1*s1/2,0], order=1)
+    
+	
     PIL.Image.fromarray(np.uint8(myoutput)).save("/code/flask/dream_frames/" + img_name)
     return myoutput
+	# PIL.Image.fromarray(np.uint8(myoutput)).save("/code/flask/dream_frames/" + img_name)
+    # return myoutput
+
 
 
 # Instead of maximizing the L2-norm of current image activations, we try to maximize the dot-products between activations of current image, and their best matching correspondences from the guide image.
@@ -237,42 +252,112 @@ def mydream(img_in,guide_in,end_in, img_name):
 
     
 #     return dream_image_timestamp
+# def dreamVideoVelho(image_timestamp):
+    
+# 	dream_image_timestamp = []
+
+	
+# 	i = 0
+
+	
+# 	last_frame = None
+# 	img_in = None
+# 	imageGuide = None
+
+#     rangeVolum = 10
+#     #temporario
+#     foiPrimeira = True
+
+# 	for line in image_timestamp:
+# 		timeBetween = (line[2]-line[1])/rangeVolum
+
+#         if foiPrimeira:    
+#             for y in range(rangeVolum):
+#                 if(last_frame is None):
+#                     img_in = np.float32(PIL.Image.open(line[0]))
+#                 else:
+#                     img_in = last_frame
+                
+                
+#                 if i < (len(image_timestamp) - 1):
+#                     img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
+
+#                 img_name = line[0].split('/code/flask/imagens/')[1]
+#                 if(img_guide is not None):
+#                     last_frame = mydream(img_in, img_guide, 'inception_3b/output',img_name+str(y)+'.jpg')
+
+#                 else:
+#                     last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
+                
+#                 dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y), (line[1]+timeBetween*y), (line[1]+timeBetween*(y+1)) ])
+#             foiPrimeira=False
+#         else:
+#             dream_image_timestamp.append(line)
+	
+# 		i = i + 1
+	
+# 	return dream_image_timestamp
+
 def dreamVideo(image_timestamp):
     
-	dream_image_timestamp = []
+    dream_image_timestamp = []
 
 	
-	i = 0
+    i = 0
 
 	
-	last_frame = None
-	img_in = None
-	imageGuide = None
+	# last_frame = None
+    last_frame = None
+	# img_in = None
+    img_in = None
+	# imageGuide = None
+    imageGuide = None
+    
+    numero = 0
 
-	for line in image_timestamp:
+    for line in image_timestamp:
+        timeB = (line[2] - line[1])/5
+
+        endChoices = []
+		# endChoices = []
+        endChoices.append("conv2/3x3_reduce")
+		# endChoices.append("conv2/3x3_reduce")
+        endChoices.append("inception_3b/pool_proj")
+		# endChoices.append("inception_3b/pool_proj")
+        endChoices.append("inception_3b/output")
+		# endChoices.append("inception_3b/output")
 		
-		for y in range(10):
-			if(last_frame is None):
-				img_in = np.float32(PIL.Image.open(line[0]))
-			else:
-				img_in = last_frame
-			
-			
-			if i < (len(image_timestamp) - 1):
-				img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
+        # timeBetween = ( line[2]-line[1] )
 
-			img_name = line[0].split('/code/flask/imagens/')[1]
-			if(img_guide is not None):
-				last_frame = mydream(img_in, img_guide, 'inception_3b/output',img_name+str(y)+'.jpg')
+        if numero < 2 :
+            for y in range(5):
+                if(last_frame is None):
+                    img_in = np.float32(PIL.Image.open(line[0]))
+                    
+                else:
+                    img_in = last_frame
+                
+                
+                if i < (len(image_timestamp) - 1):
+                    img_guide = np.float32(PIL.Image.open(image_timestamp[i + 1][0]))
 
-			else:
-				last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
-			
-			dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y), line[1], line[2]])
+                img_name = line[0].split('/code/flask/imagens/')[1]
+                if(img_guide is not None):
+                
+                    last_frame = mydream(img_in, img_guide, random.choice(endChoices),img_name+str(y)+".jpg")
+
+                else:
+                    last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
+                
+                dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y)+".jpg", (line[1]+timeB*y), (line[1]+timeB*(y+1)) ])
+            numero = numero + 1
+        else:
+            dream_image_timestamp.append(line)
+        i = i + 1
+		# i = i + 1
 		
-		i = i + 1
-	
-	return dream_image_timestamp
+		
+    return dream_image_timestamp
 
 # print 'comecando...'
 

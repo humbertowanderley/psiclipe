@@ -32,7 +32,7 @@ def make_video(images_timestamp):
 			all_clips.append(ImageClip('/code/flask/intro.jpg',duration=(float(line[1]))))
 			first_image = False
 		else:
-			all_clips.append(ImageClip(previousLine[0],duration=(float(line[1])-float(previousLine[2]))))
+    			all_clips.append(ImageClip(previousLine[0],duration=(float(line[1])-float(previousLine[2]))))
 		
 		all_clips.append(ImageClip(line[0],duration=(float(line[2])-float(line[1]))))
 		previousLine = line
@@ -47,4 +47,21 @@ def make_video(images_timestamp):
 	final_clip.write_videofile("/code/flask/static/video/psiclipe.mp4", fps=24)
 
 	 
+def improve_timestamp(images_timestamp):
+	iti = []
 
+	firstLine = True
+	lineBefore = []
+	for line in images_timestamp:
+		if firstLine:
+			lineBefore = line
+			firstLine = False
+			continue
+		else:
+    			iti.append( [lineBefore[0], lineBefore[1], line[1]] )
+    		# iti.append([lineBefore[0],lineBefore[1],line[1]])
+			lineBefore = line
+	iti.append( [lineBefore[0], lineBefore[1], lineBefore[2]] )
+	# iti.append([lineBefore[0],lineBefore[1],lineBefore[2]])
+
+	return iti
