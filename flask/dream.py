@@ -329,7 +329,7 @@ def dreamVideo(image_timestamp):
 		
         # timeBetween = ( line[2]-line[1] )
 
-        if numero < 2 :
+        if numero > 1 and numero < 4 :
             for y in range(5):
                 if(last_frame is None):
                     img_in = np.float32(PIL.Image.open(line[0]))
@@ -350,10 +350,11 @@ def dreamVideo(image_timestamp):
                     last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
                 
                 dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y)+".jpg", (line[1]+timeB*y), (line[1]+timeB*(y+1)) ])
-            numero = numero + 1
+            # numero = numero + 1
         else:
             dream_image_timestamp.append(line)
         i = i + 1
+        numero = numero + 1
 		# i = i + 1
 		
 		

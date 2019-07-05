@@ -3,26 +3,48 @@
 from google_images_download import google_images_download
 from rake_nltk import Rake
 import random
+import json
 image_sequence = 0
 
-def search_image(busc, limit, image_type):
+def search_image(busc, limit, image_type,prefix):
 	global image_sequence
 
 	response = google_images_download.googleimagesdownload()
 
 	arguments = {"keywords":busc,
 			"limit":limit,
-			"print_urls":True, 
-			"delay":1, 
+			"print_urls":True,
 			"exact_size": "800,600",
 			"type": image_type,
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
-			"prefix": str(image_sequence)}
+			"prefix": str(prefix)
+			}
 	paths = response.download(arguments)
 
 	return(paths[0][busc][0])
+
+def get_images(json_subtitle,image_type):
+   rake=Rake()
+   count = 0
+	# rake = Rake()
+	# r = Rake()
+   while count < len(json_subtitle):
+		words = rake.extract_keywords_from_text(json_subtitle[count]['Lyric'].decode('utf-8').replace(',','').replace(u'\u2019','').replace(u'\u2018','').replace(u'\xea','e').replace(u'\xe9','e').replace(u'\xe3','a').replace(u'\xe1','a').replace(u'\xf3','o').replace(u'\xf1','n'))
+		words = rake.get_ranked_phrases()
+
+		search_text = ''
+		for word in words:
+			search_text += word + ' '
+
+		json_subtitle[count]['Image'] = search_image(search_text,1,image_type,count)
+
+		count += 1
+	
+   return json_subtitle
+    	
+
 
 def get_lyric_images(lyric,image_type):
 	global image_sequence
@@ -37,7 +59,7 @@ def get_lyric_images(lyric,image_type):
 		search = ""
 		for word in text:
 			search = search + " " + random.choice(word.split())
-		vetor.append([search_image(search,1,image_type), float(line[1]), float(line[2])])
+		vetor.append([search_image(search+" artistic",1,image_type), float(line[1]), float(line[2])])
 
 		image_sequence = image_sequence + 1
 
@@ -46,10 +68,6 @@ def get_lyric_images(lyric,image_type):
 
 	for element in vetor:
 		print element
-
-
-
-
 
 #	for i in lyric:
 #		vetor.append([search_image(busc,1),i[1],i[2]])
