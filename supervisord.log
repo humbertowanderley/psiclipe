@@ -12778,3 +12778,134 @@
 2019-07-03 07:49:19,943 INFO exited: topology (exit status 1; not expected)
 2019-07-03 07:49:20,948 INFO spawned: 'topology' with pid 7154
 2019-07-03 07:49:21,950 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 21:33:41,764 CRIT Supervisor running as root (no user in config file)
+2019-07-05 21:33:41,769 INFO supervisord started with pid 1
+2019-07-05 21:33:42,774 INFO spawned: 'topology' with pid 8
+2019-07-05 21:33:43,778 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 21:53:20,337 WARN received SIGTERM indicating exit request
+2019-07-05 21:53:20,337 INFO waiting for topology to die
+2019-07-05 21:53:20,349 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 21:53:24,345 CRIT Supervisor running as root (no user in config file)
+2019-07-05 21:53:24,354 INFO supervisord started with pid 1
+2019-07-05 21:53:25,358 INFO spawned: 'topology' with pid 8
+2019-07-05 21:53:26,361 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 21:58:24,589 WARN received SIGTERM indicating exit request
+2019-07-05 21:58:24,589 INFO waiting for topology to die
+2019-07-05 21:58:24,598 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 21:58:28,656 CRIT Supervisor running as root (no user in config file)
+2019-07-05 21:58:28,658 INFO supervisord started with pid 1
+2019-07-05 21:58:29,663 INFO spawned: 'topology' with pid 9
+2019-07-05 21:58:30,666 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:02:32,534 WARN received SIGTERM indicating exit request
+2019-07-05 22:02:32,535 INFO waiting for topology to die
+2019-07-05 22:02:32,543 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:02:37,690 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:02:37,699 INFO supervisord started with pid 1
+2019-07-05 22:02:38,704 INFO spawned: 'topology' with pid 8
+2019-07-05 22:02:39,707 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:05:16,924 WARN received SIGTERM indicating exit request
+2019-07-05 22:05:16,924 INFO waiting for topology to die
+2019-07-05 22:05:16,934 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:05:20,387 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:05:20,389 INFO supervisord started with pid 1
+2019-07-05 22:05:21,395 INFO spawned: 'topology' with pid 8
+2019-07-05 22:05:22,396 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:20:48,829 WARN received SIGTERM indicating exit request
+2019-07-05 22:20:48,829 INFO waiting for topology to die
+2019-07-05 22:20:48,839 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:20:53,692 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:20:53,701 INFO supervisord started with pid 1
+2019-07-05 22:20:54,706 INFO spawned: 'topology' with pid 9
+2019-07-05 22:20:55,709 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:25:10,216 WARN received SIGTERM indicating exit request
+2019-07-05 22:25:10,216 INFO waiting for topology to die
+2019-07-05 22:25:10,226 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:25:14,350 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:25:14,359 INFO supervisord started with pid 1
+2019-07-05 22:25:15,363 INFO spawned: 'topology' with pid 8
+2019-07-05 22:25:16,365 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:28:25,932 WARN received SIGTERM indicating exit request
+2019-07-05 22:28:25,932 INFO waiting for topology to die
+2019-07-05 22:28:25,943 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:28:29,193 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:28:29,195 INFO supervisord started with pid 1
+2019-07-05 22:28:30,199 INFO spawned: 'topology' with pid 8
+2019-07-05 22:28:31,201 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:28:32,733 WARN received SIGTERM indicating exit request
+2019-07-05 22:28:32,734 INFO waiting for topology to die
+2019-07-05 22:28:32,741 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:28:35,614 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:28:35,616 INFO supervisord started with pid 1
+2019-07-05 22:28:36,620 INFO spawned: 'topology' with pid 8
+2019-07-05 22:28:37,623 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:32:49,186 WARN received SIGTERM indicating exit request
+2019-07-05 22:32:49,186 INFO waiting for topology to die
+2019-07-05 22:32:49,195 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:32:52,641 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:32:52,643 INFO supervisord started with pid 1
+2019-07-05 22:32:53,647 INFO spawned: 'topology' with pid 8
+2019-07-05 22:32:54,649 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:36:43,372 WARN received SIGTERM indicating exit request
+2019-07-05 22:36:43,372 INFO waiting for topology to die
+2019-07-05 22:36:43,382 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:36:46,486 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:36:46,488 INFO supervisord started with pid 1
+2019-07-05 22:36:47,492 INFO spawned: 'topology' with pid 8
+2019-07-05 22:36:48,493 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:38:13,370 WARN received SIGTERM indicating exit request
+2019-07-05 22:38:13,371 INFO waiting for topology to die
+2019-07-05 22:38:13,381 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:38:16,648 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:38:16,650 INFO supervisord started with pid 1
+2019-07-05 22:38:17,655 INFO spawned: 'topology' with pid 8
+2019-07-05 22:38:18,657 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:39:38,267 WARN received SIGTERM indicating exit request
+2019-07-05 22:39:38,268 INFO waiting for topology to die
+2019-07-05 22:39:38,277 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:39:41,323 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:39:41,325 INFO supervisord started with pid 1
+2019-07-05 22:39:42,330 INFO spawned: 'topology' with pid 8
+2019-07-05 22:39:43,333 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:40:23,496 WARN received SIGTERM indicating exit request
+2019-07-05 22:40:23,496 INFO waiting for topology to die
+2019-07-05 22:40:23,505 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:40:26,278 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:40:26,280 INFO supervisord started with pid 1
+2019-07-05 22:40:27,285 INFO spawned: 'topology' with pid 8
+2019-07-05 22:40:28,287 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:42:00,885 WARN received SIGTERM indicating exit request
+2019-07-05 22:42:00,886 INFO waiting for topology to die
+2019-07-05 22:42:00,896 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:42:04,202 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:42:04,204 INFO supervisord started with pid 1
+2019-07-05 22:42:05,208 INFO spawned: 'topology' with pid 8
+2019-07-05 22:42:06,210 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 22:49:03,490 WARN received SIGTERM indicating exit request
+2019-07-05 22:49:03,490 INFO waiting for topology to die
+2019-07-05 22:49:03,500 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 22:49:07,051 CRIT Supervisor running as root (no user in config file)
+2019-07-05 22:49:07,053 INFO supervisord started with pid 1
+2019-07-05 22:49:08,058 INFO spawned: 'topology' with pid 8
+2019-07-05 22:49:09,060 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 23:15:54,631 WARN received SIGTERM indicating exit request
+2019-07-05 23:15:54,631 INFO waiting for topology to die
+2019-07-05 23:15:54,643 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 23:15:54,643 CRIT reaped unknown pid 56)
+2019-07-05 23:15:59,373 CRIT Supervisor running as root (no user in config file)
+2019-07-05 23:15:59,376 INFO supervisord started with pid 1
+2019-07-05 23:16:00,380 INFO spawned: 'topology' with pid 8
+2019-07-05 23:16:01,381 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 23:20:42,105 WARN received SIGTERM indicating exit request
+2019-07-05 23:20:42,105 INFO waiting for topology to die
+2019-07-05 23:20:42,114 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 23:20:45,041 CRIT Supervisor running as root (no user in config file)
+2019-07-05 23:20:45,043 INFO supervisord started with pid 1
+2019-07-05 23:20:46,045 INFO spawned: 'topology' with pid 26
+2019-07-05 23:20:47,047 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-07-05 23:23:21,088 WARN received SIGTERM indicating exit request
+2019-07-05 23:23:21,089 INFO waiting for topology to die
+2019-07-05 23:23:21,097 INFO stopped: topology (terminated by SIGTERM)
+2019-07-05 23:23:24,911 CRIT Supervisor running as root (no user in config file)
+2019-07-05 23:23:24,914 INFO supervisord started with pid 1
+2019-07-05 23:23:25,916 INFO spawned: 'topology' with pid 27
+2019-07-05 23:23:26,917 INFO success: topology entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
