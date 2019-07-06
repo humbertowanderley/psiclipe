@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 from google_images_download import google_images_download
 from rake_nltk import Rake
 import random
@@ -41,12 +42,15 @@ def get_images(json_subtitle,image_type):
 		# for word in words:
 		# 	search_text += word + ' '
 		search_text = words[0]
-		img = Image.open(search_image(search_text,1,image_type,count))
-		img = img.resize((800,600),Image.ANTIALIAS)
-		img.save("/code/flask/imagens/"+str(count)+".jpg")
-		print img
-		json_subtitle[count]['Image'] = "/code/flask/imagens/"+str(count)+".jpg"
-		# json_subtitle[count]['Image'] = search_image(search_text,1,image_type,count)
+		# img = Image.open(search_image(search_text,1,image_type,count))
+		# img = img.resize((800,600),Image.ANTIALIAS)
+		# img.save("/code/flask/imagens/"+str(count)+".jpg")
+		# print img
+		# json_subtitle[count]['Image'] = "/code/flask/imagens/"+str(count)+".jpg"
+		img_before = search_image(search_text,1,image_type,count)
+		img_after = "/code/flask/imagens/"+str(count)+".jpg"
+		os.rename(img_before, img_after)
+		json_subtitle[count]['Image'] = img_after
 		print json_subtitle[count]['Image']
 		count += 1
 	
