@@ -4,7 +4,7 @@
 #import cv2
 import os
 from moviepy.editor import *
-
+import ffmpeg
 image_folder = '/code/flask/imagens/'
 music_folder = '/code/flask/music'
 
@@ -16,6 +16,11 @@ def scroll(get_frame, t):
     frame = get_frame(t)
     frame_region = frame[int(t):int(t)+360,:]
     return frame_region
+
+def make_video_ffmpeg(json_code,music_name):
+    ffmpeg.input('/code/flask/imagens/*.jpg', pattern_type='glob', framerate=25).output('/code/flask/static/video/psiclipe-' + music_name + '.mp4').run()
+    return '/code/flask/static/video/psiclipe-' + music_name + '.mp4'
+
 
 def make_video(json_code,music_name):
     
@@ -32,7 +37,7 @@ def make_video(json_code,music_name):
 
 	video_clip = frames_concatenated.set_audio(audio)
 
-	video_clip.write_videofile('/code/flask/static/video/psiclipe-' + music_name + '.mp4', fps=5)
+	video_clip.write_videofile('/code/flask/static/video/psiclipe-' + music_name.replace(' ','-') + '.mp4', fps=5)
 	return 'psiclipe-' + music_name + '.mp4'
 
 

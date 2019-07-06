@@ -5,6 +5,7 @@ from download_music import download_song
 from get_images import get_lyric_images
 from get_images import get_images
 from make_video import make_video
+from make_video import make_video_ffmpeg
 from make_video import improve_subtitle
 import json
 # from make_video import improve_timestamp
@@ -109,8 +110,8 @@ def project_structure(text_music_name,text_artist_name,op_deepDream,image_type):
     # print json_code['Subtitle']
     json_code['Subtitle'] = improve_subtitle(json_code['Subtitle'])
     print '\n\ntimestamps modificado\n\n'
-
     video_name = make_video(json_code,text_music_name)
+    # video_name = make_video_ffmpeg(json_code,text_music_name)
     print '\n\nclipe feito\n\n'
     # print "\n\n\n"
     # print json_code['Subtitle']

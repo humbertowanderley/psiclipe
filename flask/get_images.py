@@ -20,6 +20,7 @@ def search_image(busc, limit, image_type,prefix):
 			"format":'jpg',
 			"output_directory":"/code/flask/imagens",
 			"no_directory": True,
+			"color_type": 'full-color',
 			"prefix": str(prefix)
 			}
 	paths = response.download(arguments)
@@ -36,15 +37,16 @@ def get_images(json_subtitle,image_type):
 		words = rake.extract_keywords_from_text(json_subtitle[count]['Lyric'].decode('utf-8').replace(',','').replace(u'\u2019','').replace(u'\u2018','').replace(u'\xea','e').replace(u'\xe9','e').replace(u'\xe3','a').replace(u'\xe1','a').replace(u'\xf3','o').replace(u'\xf1','n').replace(u'\xed','i').replace(u'\xe7','c'))
 		words = rake.get_ranked_phrases()
 
-		search_text = ''
-		for word in words:
-			search_text += word + ' '
-		
+		# search_text = ''
+		# for word in words:
+		# 	search_text += word + ' '
+		search_text = words[0]
 		img = Image.open(search_image(search_text,1,image_type,count))
 		img = img.resize((800,600),Image.ANTIALIAS)
 		img.save("/code/flask/imagens/"+str(count)+".jpg")
 		print img
 		json_subtitle[count]['Image'] = "/code/flask/imagens/"+str(count)+".jpg"
+		# json_subtitle[count]['Image'] = search_image(search_text,1,image_type,count)
 		print json_subtitle[count]['Image']
 		count += 1
 	
