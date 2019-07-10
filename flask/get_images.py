@@ -41,7 +41,7 @@ def get_images(json_subtitle,image_type):
 		# search_text = ''
 		# for word in words:
 		# 	search_text += word + ' '
-		search_text = words[0]
+		search_text = random.choice(words[0].split())
 		img_before = search_image(search_text,1,image_type,count)
 
 		img = Image.open(img_before)
@@ -49,7 +49,7 @@ def get_images(json_subtitle,image_type):
 		img.save("/code/flask/imagens/"+str(count)+".jpg")
 		img_after = "/code/flask/imagens/"+str(count)+".jpg"
 		json_subtitle[count]['Image'] = img_after
-		
+
 		os.remove(img_before)
 		# os.rename(img_before, img_after)
 		# json_subtitle[count]['Image'] = img_after
