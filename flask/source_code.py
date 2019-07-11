@@ -5,11 +5,12 @@ from download_music import download_song
 from get_images import get_lyric_images
 from get_images import get_images
 from make_video import make_video
-from make_video import make_video_ffmpeg
+from make_video import make_videoDeep
 from make_video import improve_subtitle
 import json
 # from make_video import improve_timestamp
-# from dream import dreamVideo
+from dream import dreamImage
+import shutil
 
 
 current_job = "Aguarde..."
@@ -17,7 +18,8 @@ done_job = False
 
 def project_structure(text_music_name,text_artist_name,op_deepDream,image_type):
     global current_job
-
+    shutil.rmtree('/code/flask/music', ignore_errors=True)
+    shutil.rmtree('/code/flask/imagens', ignore_errors=True)
     current_job = "Buscando link da musica..."
     json_code = get_lyric_videoLink(text_music_name,text_artist_name)
     
@@ -110,7 +112,11 @@ def project_structure(text_music_name,text_artist_name,op_deepDream,image_type):
     # print json_code['Subtitle']
     json_code['Subtitle'] = improve_subtitle(json_code['Subtitle'])
     print '\n\ntimestamps modificado\n\n'
-    video_name = make_video(json_code,text_music_name)
+    if  op_deepDream:
+        json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
+        video_name = make_videoDeep(json_code,text_music_name)
+    else:    
+        video_name = make_video(json_code,text_music_name)
     # video_name = make_video_ffmpeg(json_code,text_music_name)
     print '\n\nclipe feito\n\n'
     # print "\n\n\n"
