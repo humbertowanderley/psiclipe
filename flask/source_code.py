@@ -16,7 +16,7 @@ import shutil
 current_job = "Aguarde..."
 done_job = False
 
-def project_structure(text_music_name,text_artist_name,op_deepDream,image_type):
+def project_structure(text_music_name,text_artist_name,image_type,op_deepDream,deepDream_format):
     global current_job
     shutil.rmtree('/code/flask/music', ignore_errors=True)
     shutil.rmtree('/code/flask/imagens', ignore_errors=True)
@@ -113,8 +113,17 @@ def project_structure(text_music_name,text_artist_name,op_deepDream,image_type):
     json_code['Subtitle'] = improve_subtitle(json_code['Subtitle'])
     print '\n\ntimestamps modificado\n\n'
     if  op_deepDream:
-        json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
-        video_name = make_videoDeep(json_code,text_music_name)
+        if deepDream_format == '1':
+            json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
+            video_name = make_videoDeep(json_code,text_music_name)
+        elif deepDream_format == '5':
+            #opção para futura implementação de deepdream com 5 frames
+            json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
+            video_name = make_videoDeep(json_code,text_music_name)
+        else:
+            #opção para futura implementação de deepdream com 10 frames
+            json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
+            video_name = make_videoDeep(json_code,text_music_name)
     else:    
         video_name = make_video(json_code,text_music_name)
     # video_name = make_video_ffmpeg(json_code,text_music_name)
