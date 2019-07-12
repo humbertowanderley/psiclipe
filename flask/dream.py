@@ -149,15 +149,15 @@ def deepdream(net, base_img, iter_n=10, octave_n=4, octave_scale=1.4,
     return deprocess(net, src.data[0])
 
 
-img = np.float32(PIL.Image.open('sky1024px.jpg'))
-guide = np.float32(PIL.Image.open('flowers.jpg'))
-end = 'inception_3b/output'
-h, w = guide.shape[:2]
-src, dst = net.blobs['data'], net.blobs[end]
-src.reshape(1,3,h,w)
-src.data[0] = preprocess(net, guide)
-net.forward(end=end)
-guide_features = dst.data[0].copy()
+# img = np.float32(PIL.Image.open('sky1024px.jpg'))
+# guide = np.float32(PIL.Image.open('flowers.jpg'))
+# end = 'inception_3b/output'
+# h, w = guide.shape[:2]
+# src, dst = net.blobs['data'], net.blobs[end]
+# src.reshape(1,3,h,w)
+# src.data[0] = preprocess(net, guide)
+# net.forward(end=end)
+# guide_features = dst.data[0].copy()
 
 
 def objective_guide(dst):
@@ -299,21 +299,17 @@ def mydream(img_in,guide_in,end_in, img_name):
 # 	return dream_image_timestamp
 
 def dreamImage(json_subtitle):
-    # return json_subtitle
     endChoices = []
     endChoices.append("conv2/3x3_reduce")
     endChoices.append("inception_3b/pool_proj")
     endChoices.append("inception_3b/output")
     count = 0
     while count < len(json_subtitle):
-    # for sub in json_subtitle:
-        # for y in range(5):
         img_in = np.float32(PIL.Image.open(json_subtitle[count]['Image']))
         
         if count < (len(json_subtitle)-1):
             img_guide = np.float32(PIL.Image.open(json_subtitle[count+1]['Image']))
 
-        # img_name = line[0].split('/code/flask/imagens/')[1]
         if(img_guide is not None):
             last_frame = mydream(img_in, img_guide, random.choice(endChoices),str(count)+'.jpg')
         else:
@@ -322,7 +318,6 @@ def dreamImage(json_subtitle):
         json_subtitle[count]['ImageDeepDream'] = '/code/flask/dream_frames/'+str(count)+".jpg"
         print json_subtitle[count]['ImageDeepDream']
         count += 1
-        # dream_image_timestamp.append(['/code/flask/dream_frames/'+img_name+str(y)+".jpg"]
 
     return json_subtitle
 
