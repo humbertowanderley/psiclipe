@@ -22,14 +22,21 @@ def make_video_ffmpeg(json_code,music_name):
     return '/code/flask/static/video/psiclipe-' + music_name + '.mp4'
 
 
-def make_videoDeep(json_code,music_name):
+def make_videoDeep(json_code,music_name,op_frame):
     
 	frames = []
 
 	frames.append( ImageClip('/code/flask/intro.jpg', duration = json_code['Subtitle'][0]['Begin']) )
 
-	for sub in json_code['Subtitle']:
-		frames.append( ImageClip( sub['ImageDeepDream'], duration = (sub['End'] - sub['Begin']) ) )
+	if op_frame:
+		for sub in json_code['Subtitle']:
+			frames.append( ImageClip( sub['ImageDeepDream'], duration = (sub['End'] - sub['Begin']) ) )
+		print '.'
+	else:
+    		for subtitleView in json_code['Subtitle']:
+				for sub in subtitleView['ImageDeepDream']:
+					frames.append( ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ) )
+
 
 	frames_concatenated = concatenate_videoclips(frames)
 
@@ -38,7 +45,26 @@ def make_videoDeep(json_code,music_name):
 	video_clip = frames_concatenated.set_audio(audio)
 
 	video_clip.write_videofile('/code/flask/static/video/psiclipe-' + music_name.replace(' ','-') + '.mp4', fps=5)
-	return 'psiclipe-' + music_name + '.mp4'
+	return 'psiclipe-' + music_name.replace(' ','-') + '.mp4'
+
+# def make_videoDeep_5(json_code,music_name):
+#     frames = []
+# 	frames.append( ImageClip('/code/flask/intro.jpg', duration = json_code['Subtitle'][0]['Begin']) )
+
+#     return 'abc'
+
+	# # for subtitleView in json_code['Subtitle']:
+    # # 	for sub in subtitleView['ImageDeepDream']:
+	# # 		frames.append( ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ) )
+
+	# frames_concatenated = concatenate_videoclips(frames)
+
+	# audio = AudioFileClip(json_code['MusicPath'])
+
+	# video_clip = frames_concatenated.set_audio(audio)
+
+	# video_clip.write_videofile('/code/flask/static/video/psiclipe-' + music_name.replace(' ','-') + '.mp4', fps=10)
+	# return 'psiclipe-' + music_name.replace(' ','-') + '.mp4'
 
 
 def make_video(json_code,music_name):

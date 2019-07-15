@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import shutil
 import threading
 from flask import *
 app = Flask(__name__)
@@ -24,9 +23,6 @@ def index():
 	global input_ImageType
 	global input_OpDeepDream 
 	exec_flag = False
-	shutil.rmtree('/code/flask/music', ignore_errors=True)
-	shutil.rmtree('/code/flask/imagens', ignore_errors=True)
-	
 
 	if request.method == 'POST':
 		input_MusicName = request.form['musicName']
