@@ -328,10 +328,16 @@ def dreamImage_5(json_subtitle):
     endChoices.append("inception_3b/output")
     count = 0
     while count < len(json_subtitle):
-        timeBetween = ( (json_subtitle[count]['End']-json_subtitle[count]['Begin'])/5 )
+        timeBetween = ( (json_subtitle[count]['End']-json_subtitle[count]['Begin'])/6 )
         last_frame = None
         frame_name = ''
         json_subtitle[count]['ImageDeepDream']=[]
+        deep_image = {
+            "Image": json_subtitle[count]['Image'],
+            "Begin": (json_subtitle[count]['Begin']),
+            "End": (json_subtitle[count]['Begin']+(timeBetween))
+        }
+        json_subtitle[count]['ImageDeepDream'].append(deep_image)
         for y in range(5):
             if y == 0:
                 img_in = np.float32(PIL.Image.open(json_subtitle[count]['Image']))
@@ -348,8 +354,8 @@ def dreamImage_5(json_subtitle):
                 last_frame = deepdream(net,base_img=img_in,end='inception_3b/5x5_reduce')
             deep_image = {
                 "Image": '/code/flask/dream_frames/'+frame_name,
-                "Begin": (json_subtitle[count]['Begin']+(timeBetween*y)),
-                "End": (json_subtitle[count]['Begin']+(timeBetween*(y+1)))
+                "Begin": (json_subtitle[count]['Begin']+(timeBetween*(y+1))),
+                "End": (json_subtitle[count]['Begin']+(timeBetween*(y+2)))
             }
             json_subtitle[count]['ImageDeepDream'].append(deep_image)
         print json_subtitle[count]['ImageDeepDream']
