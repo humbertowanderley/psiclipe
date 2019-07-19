@@ -11,6 +11,7 @@ import json
 # from make_video import improve_timestamp
 from dream import dreamImage
 from dream import dreamImage_5
+from dream import dreamImage_10
 import shutil
 
 
@@ -123,7 +124,7 @@ def project_structure(text_music_name,text_artist_name,image_type,op_deepDream,d
             video_name = make_videoDeep(json_code,text_music_name,False)
         else:
             #opção para futura implementação de deepdream com 10 frames
-            json_code['Subtitle'] = dreamImage(json_code['Subtitle'])
+            json_code['Subtitle'] = dreamImage_10(json_code['Subtitle'])
             video_name = make_videoDeep(json_code,text_music_name,False)
     else:    
         video_name = make_video(json_code,text_music_name)
