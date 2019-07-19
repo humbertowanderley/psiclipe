@@ -32,8 +32,11 @@ def index():
 		input_deeoDreamForm = request.form['deepDreamOpFrame']
 		if request.form.get('deepDreamOp'):
 			input_OpDeepDream = True
-		
-		nv = project_structure(input_MusicName,input_ArtistName,input_ImageType,input_OpDeepDream,input_deeoDreamForm)
+		input_OpLyric = False
+		if request.form.get('lyricOp'):
+			input_OpLyric = True
+
+		nv = project_structure(input_MusicName,input_ArtistName,input_ImageType,input_OpLyric,input_OpDeepDream,input_deeoDreamForm)
 		return redirect('/clipe/'+nv)
 		
 	else:
