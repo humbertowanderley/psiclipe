@@ -36,12 +36,12 @@ def make_videoDeep_lyric(json_code,music_name,op_frame):
 
 	if op_frame:
 		for sub in json_code['Subtitle']:
-			frames.append(CompositeVideoClip([ ImageClip( sub['ImageDeepDream'], duration = (sub['End'] - sub['Begin']) ), TextClip(sub['Lyric'], fontsize=30, color='yellow', stroke_color='black', stroke_width=0.7).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
+			frames.append(CompositeVideoClip([ ImageClip( sub['ImageDeepDream'], duration = (sub['End'] - sub['Begin']) ), TextClip(sub['Lyric'], fontsize=20, color='yellow', stroke_color='black', stroke_width=0.5).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
 
 	else:
     		for subtitleView in json_code['Subtitle']:
 				for sub in subtitleView['ImageDeepDream']:
-					frames.append(CompositeVideoClip([ ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ), TextClip(subtitleView['Lyric'], fontsize=30, color='yellow', stroke_color='black', stroke_width=0.7).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
+					frames.append(CompositeVideoClip([ ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ), TextClip(subtitleView['Lyric'], fontsize=20, color='yellow', stroke_color='black', stroke_width=0.5).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
 
 
 	frames_concatenated = concatenate_videoclips(frames)
@@ -78,7 +78,7 @@ def make_video_lyric(json_code,music_name):
 	frames.append( ImageClip('/code/flask/intro.jpg', duration = json_code['Subtitle'][0]['Begin']) )
 
 	for sub in json_code['Subtitle']:#precisa installar isso: apt install imagemagick
-		frames.append(CompositeVideoClip([ ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ) , TextClip(sub['Lyric'], fontsize=30, color='yellow', stroke_color='black', stroke_width=0.7).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
+		frames.append(CompositeVideoClip([ ImageClip( sub['Image'], duration = (sub['End'] - sub['Begin']) ) , TextClip(sub['Lyric'], fontsize=20, color='yellow', stroke_color='black', stroke_width=0.5).set_position(('center', 'bottom'))]).set_duration((sub['End'] - sub['Begin'])))
 
 	frames_concatenated = concatenate_videoclips(frames)
 

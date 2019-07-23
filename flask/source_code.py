@@ -59,11 +59,3 @@ def project_structure(text_music_name,text_artist_name,image_type,op_lyric,op_de
     print '\n\nclipe feito\n\n'
     
     return video_name
-
-
-
-
-
-
-
-
