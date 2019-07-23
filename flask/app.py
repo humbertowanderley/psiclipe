@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import threading
 from flask import *
 app = Flask(__name__)
 
