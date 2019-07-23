@@ -11,9 +11,6 @@ template_dir = '/code/flask/html'
 static_dir = '/code/flask/static'
 
 
-
-
-
 app = Flask(__name__,template_folder=template_dir, static_folder=static_dir)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -22,7 +19,6 @@ def index():
 	global input_ArtistName
 	global input_ImageType
 	global input_OpDeepDream 
-	exec_flag = False
 
 	if request.method == 'POST':
 		input_MusicName = request.form['musicName']
