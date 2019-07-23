@@ -51,8 +51,8 @@ pip install ffmpeg-python && \
 pip install moviepy --ignore-installed  && \
 pip install --upgrade youtube-dl  
 
-RUN apt install imagemagick && \
-cp /code/policy.xml /etc/ImageMagick/policy.xml
+RUN apt install imagemagick
+COPY policy.xml /etc/ImageMagick/policy.xml
 
 WORKDIR /code
 
