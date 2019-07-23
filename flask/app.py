@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import shutil
-import threading
 from flask import *
 app = Flask(__name__)
 
@@ -12,38 +10,38 @@ template_dir = '/code/flask/html'
 static_dir = '/code/flask/static'
 
 
-
-
-
 app = Flask(__name__,template_folder=template_dir, static_folder=static_dir)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	global input_MusicName
-	global input_ArtistName 
-	exec_flag = False
-	shutil.rmtree('/code/flask/music', ignore_errors=True)
-	shutil.rmtree('/code/flask/imagens', ignore_errors=True)
-	
+	global input_ArtistName
+	global input_ImageType
+	global input_OpDeepDream 
 
 	if request.method == 'POST':
 		input_MusicName = request.form['musicName']
 		input_ArtistName = request.form['artistName']
+		input_ImageType = request.form.get('typeImageOp')
 		input_OpDeepDream = False
+		input_deeoDreamForm = request.form['deepDreamOpFrame']
 		if request.form.get('deepDreamOp'):
 			input_OpDeepDream = True
-		input_ImageType = request.form.get('typeImageOp')
-		project_structure(input_MusicName,input_ArtistName,input_OpDeepDream,input_ImageType)
-		return redirect('/clipe')
+		input_OpLyric = False
+		if request.form.get('lyricOp'):
+			input_OpLyric = True
+
+		nv = project_structure(input_MusicName,input_ArtistName,input_ImageType,input_OpLyric,input_OpDeepDream,input_deeoDreamForm)
+		return redirect('/clipe/'+nv)
 		
 	else:
 		return render_template('index.html')
 
 
 
-@app.route('/clipe', methods=['GET', 'POST'])
-def clipe():
-		return render_template('clipe.html')
+@app.route('/clipe/<clipeName>')
+def clipe(clipeName):
+		return render_template('clipe.html',name_video = '/static/video/'+clipeName)
 
 
 if __name__ == '__main__':

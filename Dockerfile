@@ -36,12 +36,9 @@ RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
-
 # We want the "add-apt-repository" command
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:mc3man/trusty-media
-
-RUN apt-get update && apt-get install -y ffmpeg
 
 
 RUN pip install flask && \
@@ -50,8 +47,12 @@ pip install beautifulsoup4 && \
 pip install google_images_download && \
 pip install opencv-contrib-python-headless && \
 pip install rake-nltk && \
+pip install ffmpeg-python && \
 pip install moviepy --ignore-installed  && \
 pip install --upgrade youtube-dl  
+
+RUN apt install imagemagick && \
+cp /code/policy.xml /etc/ImageMagick/policy.xml
 
 WORKDIR /code
 

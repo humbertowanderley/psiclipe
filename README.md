@@ -1,5 +1,5 @@
 # psiclipe
-Projeto da Disciplina de Introdução a Multimídia
+Projeto inicialmente desenvolvido na Disciplina de Introdução a Multimídia
 
 ## Fluxo
 ![alt text](fluxo_psiclipe.jpg "Fluxo")
@@ -32,12 +32,13 @@ para reiniciar o container:
 https://github.com/herval/deepdream-docker (rede neural)  
 ### Flask
 http://flask.pocoo.org/ (webserver python)  porta padrão: localhost:5000
-### musiXmatch-API
-https://github.com/yakupadakli/python-musixmatch  (coletar letra das musicas)  
-### Google Custom Search
-https://developers.google.com/api-client-library/python/apis/customsearch/v1 (coletar as imagens)  
-### TextBlob
-https://textblob.readthedocs.io/en/dev/ (processamento de texto)  
+### BeautifulSoup
+https://www.crummy.com/software/BeautifulSoup/ (analise de texto html)
 ### youtube-dl
 https://ytdl-org.github.io/youtube-dl/index.html  (coleta musicas do youtube)  
-
+### google_images_download
+https://github.com/hardikvasa/google-images-download (coleta de imagens)
+### Rake-nltk
+https://github.com/csurfer/rake-nltk (processamento de texto)
+### Moviepy
+https://zulko.github.io/moviepy/ (criação de vídeo)
