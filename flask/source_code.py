@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from search_lyric import get_lyric_videoLink
 from download_music import download_song
-from get_images import get_lyric_images
 from get_images import get_images
 from make_video import make_video
 from make_video import make_video_lyric
